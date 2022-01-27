@@ -1,0 +1,32 @@
+﻿<Window x:Class="Downoader.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Downoader"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView Name="downloadList" HorizontalAlignment="Center" Height="295" Margin="0,139,0,0" VerticalAlignment="Top" Width="800" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn x:Name="queue"  Header="№" Width="30" DisplayMemberBinding="{Binding number}"/>
+                    <GridViewColumn x:Name="link" Header="Link" Width="400" DisplayMemberBinding="{Binding url}"/>
+                    <GridViewColumn x:Name="size" Header="Size" Width="100" DisplayMemberBinding="{Binding size}"/>
+                    <GridViewColumn x:Name="progressbar" Header="" Width="260">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ProgressBar Width="255" Height="20" Maximum="100" Value="{Binding progressBar.Value}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <TextBox Name="linkbox" HorizontalAlignment="Left" Margin="10,95,0,0" TextWrapping="Wrap" Text="paste your direct download link here" VerticalAlignment="Top" Width="457" Height="21" Visibility="Visible" Foreground="#FFC5BDBD" FontStyle="Italic"/>
+        <Button Content="Start download" HorizontalAlignment="Left" Margin="553,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.284,-0.153" Height="32" Width="179" Click="Button_Click"/>
+        <Label Content="Multithread downloader" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="41" Width="331" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
+        <Button Content="remove me" HorizontalAlignment="Left" Margin="519,30,0,0" VerticalAlignment="Top" Click="Button_Click" Width="66"/>
+    </Grid>
+</Window>
+
